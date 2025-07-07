@@ -1,15 +1,13 @@
-# backend/main.py
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
-from solver import solve_from_string
-from recognizer import recognize_from_image
+from services.solver import solve_from_string
+from services.recognizer import recognize_from_image
 
 app = FastAPI()
 
-# Libera acesso do app frontend para essa API
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # ajuste para o domínio real em produção
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
