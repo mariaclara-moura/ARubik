@@ -10,13 +10,27 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <Image source={require('../assets/images/logo.png')} style={styles.logo} />
 
-      <TouchableOpacity
+            <TouchableOpacity
         style={styles.button}
-        onPress={() => router.push('/camera')}
+        onPress={async () => {
+          try {
+            const response = await fetch('http://192.168.0.8:5050/solve-cube', {
+              method: 'POST',
+            });
+
+            const data = await response.text();
+            console.log('✅ Resposta do servidor:', data);
+
+            // Depois da requisição, pode navegar pra tela da câmera
+          } catch (error) {
+            console.error('❌ Erro ao tentar iniciar Qbr:', error);
+          }
+        }}
       >
         <Text style={styles.buttonText}>Abrir câmera</Text>
         <Ionicons name="camera" size={24} color="black" />
       </TouchableOpacity>
+
 
       <TouchableOpacity
         style={styles.button}
