@@ -53,17 +53,17 @@ export default function CameraStepsScreen() {
     const fetchSteps = async () => {
       try {
         // Substitua por sua chamada real ao backend se necessário
-        const response = await fetch('http://192.168.0.154:5050/steps');
+        const response = await fetch('http://192.168.0.172:5050/steps');
         const data = await response.json();
         setSteps(data.steps || []);
       } catch (error) {
         // Exemplo de passos caso o backend não responda
         setSteps([
-          '1. Posicione o cubo com a face branca para cima',
-          '2. Gire a face direita para cima',
-          '3. Gire a face frontal para a esquerda',
-          '4. Gire a face superior para trás',
-          '5. Finalize com a face inferior para frente',
+          'Posicione o cubo com a face branca para cima',
+          'Gire a face direita para cima',
+          'Gire a face frontal para a esquerda',
+          'Gire a face superior para trás',
+          'Finalize com a face inferior para frente',
         ]);
       } finally {
         setLoading(false);
